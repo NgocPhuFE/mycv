@@ -2,7 +2,14 @@ import React from "react";
 import style from "./login.css";
 import cat from "./cat.png";
 import google from "./logogg.png";
+
 const Login = () => {
+  const focusEmail = React.useRef();
+
+  React.useEffect(() => {
+    document.title = "Login";
+    focusEmail.current.focus();
+  }, []);
   return (
     <div className="container">
       <div className="frames">
@@ -36,7 +43,12 @@ const Login = () => {
           <div className="login-input">
             <label for="email" className="email">
               <i class="fa-regular fa-envelope"></i>
-              <input type="email" id="email" placeholder="Email" />
+              <input
+                ref={focusEmail}
+                type="email"
+                id="email"
+                placeholder="Email"
+              />
             </label>
             <span className="showErrorEmail">
               Please check your email again
